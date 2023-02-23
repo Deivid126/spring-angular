@@ -37,5 +37,5 @@ public class Produtos {
 
     @OneToMany(mappedBy = "produto",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<Movimentacao> tasks = new ArrayList<Movimentacao>();
+    private List<Movimentacao> movimentacaos = new ArrayList<Movimentacao>();
 }

@@ -30,6 +30,8 @@ public class Movimentacao {
     @NotNull
     @Column(nullable = false,name = "motivo")
     private String motivo;
+    @Column(nullable = false,name = "documento")
+    private String documento;
     @NotNull
     @Column(nullable = false, name = "tipo_de_movimentacao")
     @Enumerated(EnumType.STRING)
