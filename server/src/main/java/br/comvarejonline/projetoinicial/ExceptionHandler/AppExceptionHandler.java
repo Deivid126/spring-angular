@@ -14,10 +14,16 @@ import java.util.Date;
 public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
 @ExceptionHandler(value = RuntimeException.class)
-public ResponseEntity<Object> handlerException(RuntimeException run, WebRequest request)
+public ResponseEntity<Object> handlerRunException(RuntimeException run, WebRequest request)
 {
     MensagemError error = new MensagemError(new Date(), run.getMessage());
     return new ResponseEntity<>(error,new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+}
+@ExceptionHandler(value = Exception.class)
+    public ResponseEntity<Object> handlerException(Exception e, WebRequest request)
+{
+    MensagemError error = new MensagemError(new Date(), e.getMessage());
+    return new ResponseEntity<>(error,new HttpHeaders(),HttpStatus.INTERNAL_SERVER_ERROR);
 }
 
 

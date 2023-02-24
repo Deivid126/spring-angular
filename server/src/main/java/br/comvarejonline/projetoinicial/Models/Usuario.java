@@ -2,10 +2,7 @@ package br.comvarejonline.projetoinicial.Models;
 
 import br.comvarejonline.projetoinicial.Enum.Role;
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +13,8 @@ import java.util.List;
 
 @Data
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -29,10 +28,10 @@ public class Usuario implements UserDetails {
     @Column(nullable = false,name = "email")
     private String email;
     @NotNull
-    @Column(nullable = false,name = "senha")
+    @Column(nullable = false,name = "password")
     private String password;
-    @NotNull
-    @Column(nullable = false, name = "role")
+
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
     @Override
