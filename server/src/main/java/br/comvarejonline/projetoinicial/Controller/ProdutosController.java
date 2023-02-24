@@ -18,6 +18,7 @@ public class ProdutosController {
     @Autowired
     ProdutosService produtosService;
 
+
     @PostMapping
     public ResponseEntity<Produtos> createProduto(@RequestBody Produtos produto){
         return ResponseEntity.status(HttpStatus.CREATED).body(produtosService.save(produto));

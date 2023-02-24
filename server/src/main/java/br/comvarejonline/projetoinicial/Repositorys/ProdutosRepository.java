@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface ProdutosRepository extends JpaRepository<Produtos, Integer> {
-    Produtos FindByCodigo_de_barras(String codigo_de_barras);
+    Produtos findByCodigodebarras(String codigo_de_barras);
 
 
 }

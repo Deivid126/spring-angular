@@ -7,6 +7,7 @@ import br.comvarejonline.projetoinicial.Repositorys.MovimentacaoRepository;
 import br.comvarejonline.projetoinicial.Repositorys.ProdutosRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,6 +21,7 @@ public class MovimentacaoService {
     @Autowired
     ProdutosRepository produtosRepository;
 
+    @Async
     public Movimentacao save(Movimentacao movimentacao, int id){
 
         Optional<Produtos> produto = produtosRepository.findById(id);
@@ -35,7 +37,7 @@ public class MovimentacaoService {
         {
             throw new RuntimeException("O valor do saldo não pode ser negativo");
         }
-        if(movimentacao.getData().before(produto.get().getMovimentacaos().get(0).getData()))
+        if(movimentacao.getTipo_de_movimentacao() != MovimentacaoEnum.SALDO_INICIAL && movimentacao.getData().before(produto.get().getMovimentacaos().get(0).getData()))
         {
             throw new RuntimeException("A data não pode ser anterior");
         }

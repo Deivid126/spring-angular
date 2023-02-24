@@ -24,7 +24,7 @@ public class Produtos {
     private int id;
     @NotNull
     @Column(nullable = false,name = "codigo_de_barras")
-    private String codigo_de_barras;
+    private String codigodebarras;
     @NotNull
     @Column(nullable = false,name = "nome")
     private String nome;

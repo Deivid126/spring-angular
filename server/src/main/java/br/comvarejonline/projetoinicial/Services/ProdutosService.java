@@ -6,6 +6,7 @@ import br.comvarejonline.projetoinicial.Models.Produtos;
 import br.comvarejonline.projetoinicial.Repositorys.ProdutosRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,9 +21,10 @@ public class ProdutosService {
     @Autowired
     private MovimentacaoService MoviService;
 
+    @Async
     public Produtos save(Produtos produto){
 
-        Produtos produtobanco = repositoryProdutos.FindByCodigo_de_barras(produto.getCodigo_de_barras());
+        Produtos produtobanco = repositoryProdutos.findByCodigodebarras(produto.getCodigodebarras());
 
         if(produtobanco != null) {
             throw new RuntimeException("Produto já existe");
@@ -41,7 +43,8 @@ public class ProdutosService {
             movimentacao.setTipo_de_movimentacao(MovimentacaoEnum.SALDO_INICIAL);
             movimentacao.setDocumento("");
             MoviService.save(movimentacao, produtosave.getId());
-            return produto;
+            Optional<Produtos> produtosnew = repositoryProdutos.findById(produtosave.getId());
+            return produtosnew.get();
         }
 
         return repositoryProdutos.save(produto);
@@ -52,7 +55,7 @@ public class ProdutosService {
         if(produtosbanco.isPresent()){
             produtosbanco.get().setNome(produtos.getNome());
             produtosbanco.get().setQuantidade_minima(produtos.getQuantidade_minima());
-            produtosbanco.get().setCodigo_de_barras(produtos.getCodigo_de_barras());
+            produtosbanco.get().setCodigodebarras(produtos.getCodigodebarras());
             repositoryProdutos.save(produtosbanco.get());
         }
         return produtosbanco.get();
