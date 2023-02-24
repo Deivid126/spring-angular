@@ -3,13 +3,13 @@ package br.comvarejonline.projetoinicial.Services;
 import br.comvarejonline.projetoinicial.Enum.MovimentacaoEnum;
 import br.comvarejonline.projetoinicial.Models.Movimentacao;
 import br.comvarejonline.projetoinicial.Models.Produtos;
-import br.comvarejonline.projetoinicial.Repositorys.MovimentacaoRepository;
 import br.comvarejonline.projetoinicial.Repositorys.ProdutosRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,7 +32,7 @@ public class ProdutosService {
             throw new RuntimeException("Saldo Inicial não posde ser menor que a quantidade minima");
         }
         if(produto.getQuantidade_minima() > 0){
-            repositoryProdutos.save(produto);
+            Produtos produtosave = repositoryProdutos.save(produto);
             Movimentacao movimentacao = new Movimentacao();
             movimentacao.setProduto(produto);
             movimentacao.setData(new Date());
@@ -40,7 +40,7 @@ public class ProdutosService {
             movimentacao.setQuantidade(produto.getQuantidade_minima());
             movimentacao.setTipo_de_movimentacao(MovimentacaoEnum.SALDO_INICIAL);
             movimentacao.setDocumento("");
-            MoviService.save(movimentacao);
+            MoviService.save(movimentacao, produtosave.getId());
             return produto;
         }
 
@@ -56,6 +56,14 @@ public class ProdutosService {
             repositoryProdutos.save(produtosbanco.get());
         }
         return produtosbanco.get();
+    }
+
+    public List<Produtos> getAll(){
+        return repositoryProdutos.findAll();
+    }
+    public Optional<Produtos> getOne(int id)
+    {
+        return repositoryProdutos.findById(id);
     }
 
 }
