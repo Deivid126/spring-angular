@@ -32,8 +32,8 @@ public class Produtos {
     @Column(nullable = false,name = "quantidade_minima")
     private Integer quantidade_minima;
     @NotNull
-    @Column(nullable = false,name = "saldo_minimo")
-    private Integer saldo_minimo;
+    @Column(nullable = false,name = "saldo_inicial")
+    private Integer saldo_inicial;
 
     @OneToMany(mappedBy = "produto",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonManagedReference

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginServiceService } from './services/login-service.service';
 
 @Component({
   selector: 'app-root',
@@ -11,23 +13,30 @@ export class AppComponent {
 
   loginForm: FormGroup;
 
-  constructor() { }
+  emailset:string;
+  passwordset:string;
+  roleset:string;
+  
+  
+  constructor(private service: LoginServiceService, private router: Router) { }
 
   ngOnInit() {
-    this.createForm();
+    
   }
 
-  createForm() {
+ 
 
 
-
-  }
-
-  onKeepSigned() {
-
-  }
-
-  onSubmit() {
-
+   onSubmit(data:any) {
+      if(data.role.toString() == "GERENTE")
+      {
+        this.service.login(data);
+        this.router.navigate(['/app-produto-cadastro']);
+      }
+      if(data.role.toString() =="OPERADOR")
+      {
+        this.service.login(data);
+        this.router.navigate(['/app-produto-cadastro']);
+      }      
   }
 }

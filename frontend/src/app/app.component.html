@@ -1,28 +1,29 @@
 <div class="login-container">
-
   <div class="card">
-
-    <div class="card-body m-4">
-
+    <div class="card-body m-2">
       <div class="header">
         <img src="./assets/images/logo-varejo-nome.png" />
         <h2>Entrar</h2>
+        <br>
+        <h4>Escolha entre Gerente ou Operador</h4>
+        <p>Clique e selecione</p>
       </div>
-
-      <form (submit)="onSubmit()">
-
-        <div class="input-group mb-3">
-
-          <input type="text" class="form-control" placeholder="Usuário" autofocus>
+      <form #f = "ngForm" (ngSubmit)="onSubmit(f)" noValidate>
+        <div class="input-group mb-2">
+          <select id="ro" class="form-control" name="role" ngModel #role = "ngModel" required autofocus>
+            <option value="GERENTE">GERENTE</option>
+            <option value="OPERADOR">OPERADOR</option>
+          </select>
         </div>
-
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Senha">
+        <div class="input-group mb-2">
+          <input type="text" class="form-control" name="email" placeholder="gerente@gmail.com" ngModel required #nome="ngModel" >
         </div>
-
-        <button type="submit" class="btn btn-primary btn-block btn-salvar">Entrar</button>
+        <div class="input-group mb-2">
+          <input type="text" class="form-control"  name="password" placeholder="password" ngModel required #password="ngModel" >
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-salvar">Criar</button>
       </form>
-
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>
