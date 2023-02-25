@@ -35,7 +35,7 @@ public class JwtService {
 
         var jwttoken = jwtTokenUtil.generateToken(user);
 
-        return JwtResponse.builder().token(jwttoken).build();
+        return JwtResponse.builder().token(jwttoken).role(request.getRole().name()).build();
 
     }
 
@@ -51,7 +51,7 @@ public class JwtService {
 
         var jwttoken = jwtTokenUtil.generateToken(user);
 
-        return JwtResponse.builder().token(jwttoken).build();
+        return JwtResponse.builder().token(jwttoken).role(request.getRole().name()).build();
     }
 
 }

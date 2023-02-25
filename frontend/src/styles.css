@@ -1,12 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700);
+
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 13px;
   font-weight: 400;
-  color: #3c3c3c;
-  background-color: #fbfbfb;
+  height: 100vh;
+  background: linear-gradient(rgba(23, 162, 184, 0.9), rgba(0, 128, 110, 0.9)), url('./assets/images/background-imagem.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
 }
 
 h1,

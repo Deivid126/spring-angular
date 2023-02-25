@@ -12,6 +12,12 @@ import { MovimentacaoCadastroComponent } from './componets/movimentacao-cadastro
 import { HeaderComponent } from './componets/header/header.component';
 import { ProdutosEdicaoComponent } from './componets/produtos-edicao/produtos-edicao.component';
 import { MovimentacaoEdicaoComponent } from './componets/movimentacao-edicao/movimentacao-edicao.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CreateProtudosComponent } from './pages/create-protudos/create-protudos.component';
+import { UptadeProdutosComponent } from './pages/uptade-produtos/uptade-produtos.component';
+import { CreateMovimentacaoComponent } from './pages/create-movimentacao/create-movimentacao.component';
+import { UptadeMovimentacaoComponent } from './pages/uptade-movimentacao/uptade-movimentacao.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,13 @@ import { MovimentacaoEdicaoComponent } from './componets/movimentacao-edicao/mov
     MovimentacaoCadastroComponent,
     HeaderComponent,
     ProdutosEdicaoComponent,
-    MovimentacaoEdicaoComponent
+    MovimentacaoEdicaoComponent,
+    LoginComponent,
+    HomeComponent,
+    CreateProtudosComponent,
+    UptadeProdutosComponent,
+    CreateMovimentacaoComponent,
+    UptadeMovimentacaoComponent
   ],
   imports: [
     BrowserModule,
