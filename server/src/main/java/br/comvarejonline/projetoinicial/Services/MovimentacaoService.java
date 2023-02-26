@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,7 +22,10 @@ public class MovimentacaoService {
     @Autowired
     ProdutosRepository produtosRepository;
 
-    @Async
+    public List<Movimentacao> getAll(){
+        return movimentacaoRepository.findAll();
+    }
+
     public Movimentacao save(Movimentacao movimentacao, int id){
 
         Optional<Produtos> produto = produtosRepository.findById(id);
@@ -33,7 +37,7 @@ public class MovimentacaoService {
         if(produto.get().getMovimentacaos().size() == 0 && movimentacao.getTipo_de_movimentacao() == MovimentacaoEnum.AJUSTE_ENTRADA || movimentacao.getTipo_de_movimentacao() == MovimentacaoEnum.AJUSTE_SAIDA){
             throw new RuntimeException("É necessário ter movimentações");
         }
-        if(produto.get().getSaldo_minimo() - movimentacao.getQuantidade() < 0)
+        if(produto.get().getSaldo_inicial() - movimentacao.getQuantidade() < 0)
         {
             throw new RuntimeException("O valor do saldo não pode ser negativo");
         }

@@ -1,1 +1,65 @@
-<p>movimentacao-resultados works!</p>
+<div class="results-container">
+    <h1>Movimentações Realizadas</h1>
+    <form action="">
+        <div class="input-group">
+            <input type="text" class="form-control" name="produto" placeholder="Digite o nome do produto" ngModel #produto="ngModel" >
+          </div>
+          <div class="input-group">
+            <input type="date" class="form-control-date"  name="datestart" placeholder="password" ngModel  #datestart="ngModel" >
+          </div>
+          <div class="input-group">
+            <p>Até:</p>
+            <input type="date" class="form-control-date"  name="dateend" placeholder="password" ngModel  #dateend="ngModel" >
+          </div>
+          <div class="input-group">
+            <select  class="form-control" name="order">
+                <option value="produto-select">Produtos</option>
+                <option value="data-select">Data</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block btn-salvar">Buscar</button>
+    </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Data de Movimentação</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Tipo de Movimento</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Motivo</th>
+            <th scope="col">Saldo</th>
+            <th scope="col">Situação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mark </td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo   <button class="btn btn-primary btn-block btn-salvar">Editar</button></td>
+          </tr>
+          <tr>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

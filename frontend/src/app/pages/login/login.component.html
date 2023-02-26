@@ -6,11 +6,11 @@
           <h2>Entrar</h2>
           <br>
           <h4>Escolha entre Gerente ou Operador</h4>
-          <p>Clique e selecione</p>
         </div>
         <form #f = "ngForm" (ngSubmit)="onSubmit(f)" noValidate>
           <div class="input-group mb-2">
             <select id="ro" class="form-control" name="role" ngModel #role = "ngModel" required autofocus>
+              <option selected disabled value="">Selecione uma Role</option>
               <option value="GERENTE">GERENTE</option>
               <option value="OPERADOR">OPERADOR</option>
             </select>

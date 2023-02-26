@@ -1,1 +1,43 @@
-<p>produtos-edicao works!</p>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Editar Produto</h2>
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" noValidate>
+                <label for="produto">Produto</label>
+            <select id="produto" class="form-control" name="produto" ngModel #produto = "ngModel" required autofocus>
+              <option selected disabled value="">Selecione o Produto</option>
+              <option value="GERENTE">GERENTE</option>
+              <option value="OPERADOR">OPERADOR</option>
+            </select>
+            <div class="input-group">
+                <label for="id">Id</label>
+                <input type="text" id="id" class="form-control" name="id" ngModel 
+                    #id="ngModel" readonly>
+            </div>
+                <div class="input-group">
+                    <label for="codigo">Código de Barras</label>
+                    <input type="text" id="codigo" class="form-control" name="codigo" ngModel required
+                        #codigo="ngModel">
+                </div>
+                <div class="input-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" class="form-control" name="nome" ngModel required #nome="ngModel">
+                </div>
+                <div class="input-group">
+                    <label for="quantidade">Quantidade Mínima</label>
+                    <input type="number" id="quantidade" class="form-control" name="quantidade" ngModel required
+                        #quantidade="ngModel">
+                </div>
+                <div class="input-group">
+                    <label for="saldo">Saldo Inicial</label>
+                    <input type="number" id="saldo" class="form-control" name="saldo" ngModel required #saldo="ngModel">
+                </div>
+                <div class="input-group-button">
+                    <button type="submit" class="btn btn-primary btn-block btn-salvar">Editar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

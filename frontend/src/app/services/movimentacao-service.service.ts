@@ -2,30 +2,27 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Produto } from '../models/Produtos';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProdutosServiceService {
+export class MovimentacaoServiceService {
+  url:string = environment.urlMovimentacao;
+  token:string;
+  movimentacao:any
+  constructor(private http: HttpClient) { }
+  
 
-  constructor(private http:HttpClient) { }
-  produto: Produto | any
-  token:string = "";
-  url:string = environment.urlProdutos;
 
-  cadastrarProduto(data:Produto):Observable<Produto> {
-    this.produto = data;
-    console.log(this.produto)
+  listAllMovimentacao():Observable<any>{
     this.token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.token}`
     })
 
-    this.produto = this.http.post(this.url,this.produto,{headers:headers})
+    this.movimentacao = this.http.get(`${this.url}/all`,{headers:headers})
 
-    return this.produto;
+    return this.movimentacao;
   }
-
 }

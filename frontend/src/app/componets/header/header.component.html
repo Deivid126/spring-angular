@@ -4,9 +4,10 @@
 </div>
 <div class="navigate">
     <nav>
-        <a routerLink="/home">Home</a>
-        <a class = "link-center"routerLink="/app-movimentacao-cadastro">Criar Movimentação</a>
-        <a routerLink="/app-produtos-cadastro">Cadastrar Produtos</a>
+        <a routerLink="/home">HOME</a>
+        <a routerLink="/app-movimentacao-cadastro">CRIAR MOVIMENTAÇÃO</a>
+        <a *ngIf="verificarPermisao('GERENTE')" routerLink="/app-produtos-cadastro">CADASTRAR PRODUTOS</a>
+        <a *ngIf="verificarPermisao('GERENTE')" routerLink="/app-produtos-edicao">EDITAR PRODUTOS</a>
     </nav>
 </div>
 </header>

@@ -21,7 +21,7 @@ public class ProdutosService {
     @Autowired
     private MovimentacaoService MoviService;
 
-    @Async
+
     public Produtos save(Produtos produto){
 
         Produtos produtobanco = repositoryProdutos.findByCodigodebarras(produto.getCodigodebarras());
@@ -29,7 +29,7 @@ public class ProdutosService {
         if(produtobanco != null) {
             throw new RuntimeException("Produto já existe");
         }
-        if(produto.getSaldo_minimo() < produto.getQuantidade_minima())
+        if(produto.getSaldo_inicial() < produto.getQuantidade_minima())
         {
             throw new RuntimeException("Saldo Inicial não posde ser menor que a quantidade minima");
         }

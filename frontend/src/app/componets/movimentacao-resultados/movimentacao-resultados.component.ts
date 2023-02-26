@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovimentacaoServiceService } from 'src/app/services/movimentacao-service.service';
 
 @Component({
   selector: 'app-movimentacao-resultados',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovimentacaoResultadosComponent implements OnInit {
 
-  constructor() { }
+  movimentacao:any;
+  constructor(private service: MovimentacaoServiceService) { }
 
   ngOnInit(): void {
+    this.getAll();
   }
 
+getAll(){
+  this.service.listAllMovimentacao().subscribe(res => {
+    console.log(res);
+  })
+}
 }

@@ -27,6 +27,10 @@ public class MovimentacaoController {
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(movimentacaoService.save(movimentacao,id));
     }
+    @GetMapping("/all")
+    public ResponseEntity<List<Movimentacao>> getAllReturn(){
+        return ResponseEntity.status(HttpStatus.OK).body(movimentacaoService.getAll());
+    }
     @GetMapping
     public ResponseEntity<List<Movimentacao>> getAll(
             @RequestParam(value = "id", required = false) String id,

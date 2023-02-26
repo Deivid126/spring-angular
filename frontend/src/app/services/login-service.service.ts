@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { requestLogin } from '../models/RequestLogin';
 import { responseLogin } from '../models/ResponseLogin';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class LoginServiceService {
 
   response: responseLogin | any;
   constructor(private http:HttpClient) {}
-
+  url:string = environment.urlLogin;
   token:string = "";
   
   

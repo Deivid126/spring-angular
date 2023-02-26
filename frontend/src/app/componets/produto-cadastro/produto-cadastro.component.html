@@ -1,1 +1,32 @@
-<p>produto-cadastro works!</p>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Cadastrar Produto</h2>
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" noValidate (ngSubmit)="createProduto(f)">
+                <div class="input-group">
+                    <label for="codigodebarras">Código de Barras</label>
+                    <input type="text" id="codigodebarras" class="form-control" name="codigodebarras" ngModel required
+                        #codigodebarras="ngModel">
+                </div>
+                <div class="input-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" class="form-control" name="nome" ngModel required #nome="ngModel">
+                </div>
+                <div class="input-group">
+                    <label for="quantidade">Quantidade Mínima</label>
+                    <input type="number" id="quantidade" class="form-control" name="quantidade_minima" ngModel required
+                        #quantidade_minima="ngModel">
+                </div>
+                <div class="input-group">
+                    <label for="saldo">Saldo Inicial</label>
+                    <input type="number" id="saldo" class="form-control" name="saldo_inicial" ngModel required #saldo_inicial="ngModel">
+                </div>
+                <div class="input-group-button">
+                    <button type="submit" class="btn btn-primary btn-block btn-salvar">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
