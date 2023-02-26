@@ -12,11 +12,11 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 150px;
+    margin-right: 50px;
 }
 a{
-    font-size: large;
     font-weight: 700;
+    font-size: 14px;
     text-decoration: none;
     margin-left: 20px;
     margin-right: 20px;
@@ -24,3 +24,26 @@ a{
 a:hover{
     color:aqua
 }
+
+@media ( 350px <= width <= 900px) {
+
+    a{
+        font-weight: 700;
+        font-size: 9px;
+        text-decoration: none;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+    img{
+        width: 80px;
+        height: 40px;
+    }
+    .navigate{
+        margin: 0;
+    }
+    
+}
+
+
+
+ 

@@ -3,36 +3,37 @@
         <div class="card-header">
             <h2>Editar Produto</h2>
         </div>
-        <div class="card-body">
-            <form #f="ngForm" noValidate>
-                <label for="produto">Produto</label>
-            <select id="produto" class="form-control" name="produto" ngModel #produto = "ngModel" required autofocus>
+        <div class="input-group">
+            <label for="produto">Produto</label>
+            <select id="produto" class="form-control" (change)="FindProduto($event.target.value)">
               <option selected disabled value="">Selecione o Produto</option>
-              <option value="GERENTE">GERENTE</option>
-              <option value="OPERADOR">OPERADOR</option>
+              <option *ngFor="let p of produtos" [value]="p.id">{{p.nome}}</option>
             </select>
+        </div>
+        <div class="card-body">
+            <form #f="ngForm" noValidate >
             <div class="input-group">
                 <label for="id">Id</label>
-                <input type="text" id="id" class="form-control" name="id" ngModel 
+                <input type="text" id="id" class="form-control" [value]="produtoEdit?.id"  name="id" ngModel 
                     #id="ngModel" readonly>
             </div>
                 <div class="input-group">
                     <label for="codigo">Código de Barras</label>
-                    <input type="text" id="codigo" class="form-control" name="codigo" ngModel required
+                    <input type="text" id="codigo" class="form-control" [value]="produtoEdit?.codigodebarras" name="codigodebarras" ngModel required
                         #codigo="ngModel">
                 </div>
                 <div class="input-group">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" class="form-control" name="nome" ngModel required #nome="ngModel">
+                    <input type="text" id="nome" class="form-control" name="nome" [value]="produtoEdit?.nome" ngModel required #nome="ngModel">
                 </div>
                 <div class="input-group">
                     <label for="quantidade">Quantidade Mínima</label>
-                    <input type="number" id="quantidade" class="form-control" name="quantidade" ngModel required
+                    <input type="number" id="quantidade" class="form-control"  name="quantidade" [value]="produtoEdit?.quantidade_minima" ngModel required
                         #quantidade="ngModel">
                 </div>
                 <div class="input-group">
                     <label for="saldo">Saldo Inicial</label>
-                    <input type="number" id="saldo" class="form-control" name="saldo" ngModel required #saldo="ngModel">
+                    <input type="number" id="saldo" class="form-control" name="saldo" [value]="produtoEdit?.saldo_inicial"  ngModel required #saldo="ngModel" readonly>
                 </div>
                 <div class="input-group-button">
                     <button type="submit" class="btn btn-primary btn-block btn-salvar">Editar</button>

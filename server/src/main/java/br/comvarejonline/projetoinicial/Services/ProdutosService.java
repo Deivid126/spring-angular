@@ -38,12 +38,12 @@ public class ProdutosService {
             Movimentacao movimentacao = new Movimentacao();
             movimentacao.setProduto(produto);
             movimentacao.setData(new Date());
-            movimentacao.setMotivo("");
+            movimentacao.setMotivo("Cadastro de Produto Novo");
             movimentacao.setQuantidade(produto.getQuantidade_minima());
             movimentacao.setTipo_de_movimentacao(MovimentacaoEnum.SALDO_INICIAL);
             movimentacao.setDocumento("");
-            MoviService.save(movimentacao, produtosave.getId());
-            Optional<Produtos> produtosnew = repositoryProdutos.findById(produtosave.getId());
+            MoviService.save(movimentacao, produtosave.getProduto_id());
+            Optional<Produtos> produtosnew = repositoryProdutos.findById(produtosave.getProduto_id());
             return produtosnew.get();
         }
 

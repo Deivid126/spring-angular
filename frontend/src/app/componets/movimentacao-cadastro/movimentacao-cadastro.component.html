@@ -4,24 +4,23 @@
             <h2>Criar Movimentação</h2>
         </div>
       <div class="card-body">
-        <form #f = "ngForm"  noValidate>
+        <form #f = "ngForm"  noValidate (ngSubmit)="CreateMovimentacao(f.value)">
           <div class="input-group">
             <label for="produto">Produto</label>
-            <select id="produto" class="form-control" name="produto" ngModel #produto = "ngModel" required autofocus>
+            <select id="produto" class="form-control" name="produto" (change)="OnId($event.target.value)">
               <option selected disabled value="">Selecione o Produto</option>
-              <option value="GERENTE">GERENTE</option>
-              <option value="OPERADOR">OPERADOR</option>
+              <option *ngFor="let p of produtos" [value]="p.produto_id">{{p.nome}}</option>
             </select>
           </div>
           <div class="input-group">
             <label for="tipo">Tipo de Movimentação</label>
-            <select id="tipo" class="form-control" name="tipo" ngModel #tipo = "ngModel" required autofocus>
+            <select id="tipo" class="form-control" name="tipo_de_movimentacao" ngModel #tipo = "ngModel" required autofocus>
               <option selected disabled value="">Selecione um Tipo de Movimentação</option>
               <option value="ENTRADA">ENTRADA</option>
-              <option value="OPERADOR">SAÍDA</option>
-              <option value="SALDO_INICIAL">SALDO INICIAL</option>
-              <option value="AJUSTE_ENTRADA">AJUSTE ENTRADA</option>
-              <option value="AJUSTE_SAÍDA">AJUSTE SAÍDA</option>
+              <option value="SAIDA">SAÍDA</option>
+              <option *ngIf="verificarPermisao('GERENTE')" value="SALDO_INICIAL">SALDO INICIAL</option>
+              <option *ngIf="verificarPermisao('GERENTE')" value="AJUSTE_ENTRADA">AJUSTE ENTRADA</option>
+              <option *ngIf="verificarPermisao('GERENTE')" value="AJUSTE_SAIDA">AJUSTE SAÍDA</option>
             </select>
           </div>
           <div class="input-group">

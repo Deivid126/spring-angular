@@ -45,7 +45,7 @@ public class MovimentacaoService {
         {
             throw new RuntimeException("A data não pode ser anterior");
         }
-
+        movimentacao.setNome_produto(produto.get().getNome());
         return movimentacaoRepository.save(movimentacao);
         }
 }
